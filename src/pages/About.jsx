@@ -25,6 +25,17 @@ export default function About() {
                         <div style={{ marginBottom: "1.5rem" }}>
                                 <div className="section-label" style={{ marginBottom: "0.5rem" }}>work</div>
                                 <p style={{ marginBottom: "0.4rem" }}>
+                                        Incoming Software Developer Intern at the{" "}
+                                        <a
+                                                href="https://mitibmwatsonailab.mit.edu/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                        >
+                                                MIT-IBM Watson AI Lab
+                                        </a>
+                                        {" "}— Cambridge, MA.
+                                </p>
+                                <p style={{ marginBottom: "0.4rem" }}>
                                         Software Engineering Intern at{" "}
                                         <span style={{ color: "var(--fg1)" }}>Colexia</span>
                                         {" "}— a fashion-tech startup.
