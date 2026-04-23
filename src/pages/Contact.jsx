@@ -11,6 +11,7 @@ export default function Contact() {
                 <motion.div
                         initial={{ opacity: 0, y: 18 }}
                         animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.35, ease: "easeOut" }}
                         className="page-container"
                         style={{ padding: "7rem 4rem 3rem 4rem", maxWidth: "680px" }}
@@ -24,11 +25,14 @@ export default function Contact() {
 
                         <div style={{ display: "grid", gap: "1.25rem" }}>
                                 {contacts.map(({ label, value, href }) => (
-                                        <a
+                                        <motion.a
                                                 key={label}
                                                 href={href}
                                                 target={href.startsWith("mailto") ? undefined : "_blank"}
                                                 rel="noopener noreferrer"
+                                                className="contact-card"
+                                                whileHover={{ x: 4 }}
+                                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
                                                 style={{
                                                         display: "flex",
                                                         alignItems: "center",
@@ -39,16 +43,7 @@ export default function Contact() {
                                                         borderLeft: "3px solid var(--bg3)",
                                                         borderRadius: "3px",
                                                         textDecoration: "none",
-                                                        transition: "border-left-color 0.18s ease, background 0.18s ease",
                                                         color: "inherit",
-                                                }}
-                                                onMouseEnter={e => {
-                                                        e.currentTarget.style.borderLeftColor = "var(--yellow)";
-                                                        e.currentTarget.style.background = "var(--bg2)";
-                                                }}
-                                                onMouseLeave={e => {
-                                                        e.currentTarget.style.borderLeftColor = "var(--bg3)";
-                                                        e.currentTarget.style.background = "var(--bg1)";
                                                 }}
                                         >
                                                 <span style={{
@@ -69,7 +64,7 @@ export default function Contact() {
                                                         {value}
                                                 </span>
                                                 <span style={{ marginLeft: "auto", color: "var(--fg3)", fontSize: "0.9rem" }}>→</span>
-                                        </a>
+                                        </motion.a>
                                 ))}
                         </div>
 

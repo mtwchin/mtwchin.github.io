@@ -1,9 +1,18 @@
 import { motion } from "framer-motion";
 import ParticlesBackground from "../components/ParticlesBackground";
+import { useTypewriter } from "../hooks/useTypewriter";
 
 export default function Home() {
+        const { displayed } = useTypewriter("matthew chin", 55);
+
         return (
-                <>
+                <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        style={{ position: "relative" }}
+                >
                         <ParticlesBackground id="tsparticles" />
                         <div style={{
                                 display: "flex",
@@ -75,7 +84,15 @@ export default function Home() {
                                                                         color: "var(--fg)",
                                                                         fontFamily: "'JetBrains Mono', monospace",
                                                                         letterSpacing: "-0.02em",
-                                                                }}>matthew chin</span>
+                                                                        minHeight: "1.55rem",
+                                                                }}>
+                                                                        {displayed}
+                                                                        <span style={{
+                                                                                color: "var(--yellow)",
+                                                                                animation: "blink 1s step-end infinite",
+                                                                                marginLeft: "1px",
+                                                                        }}>_</span>
+                                                                </span>
                                                         </div>
                                                         <div style={{
                                                                 fontSize: "0.82rem",
@@ -136,6 +153,6 @@ export default function Home() {
                                         </div>
                                 </motion.div>
                         </div>
-                </>
+                </motion.div>
         );
 }
