@@ -3,7 +3,7 @@ import ParticlesBackground from "../components/ParticlesBackground";
 import { useTypewriter } from "../hooks/useTypewriter";
 
 export default function Home() {
-        const { displayed } = useTypewriter("matthew chin", 55);
+        const { displayed } = useTypewriter("matthew chin", 95);
 
         return (
                 <motion.div

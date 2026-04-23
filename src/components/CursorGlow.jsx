@@ -8,7 +8,7 @@ export default function CursorGlow() {
         const springX = useSpring(mouseX, { stiffness: 100, damping: 25 });
         const springY = useSpring(mouseY, { stiffness: 100, damping: 25 });
 
-        const background = useMotionTemplate`radial-gradient(400px circle at ${springX}px ${springY}px, rgba(250,189,47,0.05), transparent)`;
+        const background = useMotionTemplate`radial-gradient(500px circle at ${springX}px ${springY}px, rgba(250,189,47,0.07), transparent)`;
 
         useEffect(() => {
                 const handleMouseMove = (e) => {

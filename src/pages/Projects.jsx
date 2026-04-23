@@ -85,9 +85,8 @@ function TiltCard({ project, i }) {
                                 onMouseMove={handleMouseMove}
                                 onMouseLeave={handleMouseLeave}
                                 initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-40px" }}
-                                transition={{ duration: 0.35, ease: "easeOut", delay: i * 0.07 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + i * 0.1 }}
                         >
                                 <div className="project-header">
                                         <div>
