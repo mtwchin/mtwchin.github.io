@@ -27,6 +27,12 @@ const tagVariants = {
         show: { opacity: 1, scale: 1 },
 };
 
+const glowRGB = {
+        lang: "184,187,38",
+        tool: "131,165,152",
+        db:   "211,134,155",
+};
+
 function TagGroup({ label, items, type }) {
         return (
                 <div style={{ marginBottom: "1.4rem" }}>
@@ -42,6 +48,10 @@ function TagGroup({ label, items, type }) {
                                                 className={`skill-tag ${type}`}
                                                 variants={tagVariants}
                                                 transition={{ duration: 0.25, ease: "easeOut" }}
+                                                whileHover={{
+                                                        scale: 1.08,
+                                                        boxShadow: `0 0 10px rgba(${glowRGB[type]}, 0.4)`,
+                                                }}
                                         >
                                                 {item}
                                         </motion.span>
@@ -56,6 +66,7 @@ export default function Skills() {
                 <motion.div
                         initial={{ opacity: 0, y: 18 }}
                         animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.35, ease: "easeOut" }}
                         className="page-container"
                         style={{ padding: "7rem 4rem 3rem 4rem", maxWidth: "780px" }}
