@@ -109,8 +109,7 @@ export default function Home() {
                                                         <div className="section-label">about</div>
                                                         <p style={{ margin: 0, fontSize: "0.88rem", lineHeight: 1.7 }}>
                                                                 junior at the university of maryland studying
-                                                                computer science. interested in software engineering
-                                                                and web development.
+                                                                computer science, currently interning at IBM.
                                                         </p>
                                                 </div>
 
