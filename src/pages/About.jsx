@@ -59,11 +59,11 @@ export default function About() {
                                 viewport={{ once: true, margin: "-60px" }}
                         >
                                 <motion.p variants={itemVariants}>
-                                        Junior at UMD studying Computer Science and Business, currently studying abroad in Madrid.
-                                        Building skills in web development and general software engineering.
+                                        Junior at UMD studying Computer Science and Business.
+                                        Eagerly building skills in general software engineering.
                                 </motion.p>
                                 <motion.p variants={itemVariants}>
-                                        Based in the DC Metro Area, grew up between Northern New Jersey and the Boston area.
+                                        Currently based in the DMV Area, grew up between Northern New Jersey and the Boston area.
                                 </motion.p>
                         </motion.div>
 

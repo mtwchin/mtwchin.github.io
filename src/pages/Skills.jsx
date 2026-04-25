@@ -19,7 +19,9 @@ const coursework = [
         { code: "CMSC320", name: "Database Design" },
         { code: "CMSC4XX", name: "Databases and Data Modeling" },
         { code: "CMSC434", name: "Human-Computer Interaction" },
+        { code: "CMSC434", name: "Programming Handheld Devices (Android)" },
         { code: "CMSC456", name: "Cryptography" },
+        { code: "CMSC471", name: "Data Visualization" },
 ];
 
 const tagVariants = {
