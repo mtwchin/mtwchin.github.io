@@ -45,12 +45,12 @@ const ParticlesBackground = (props) => {
                                 },
                         },
                         particles: {
-                                color: { value: "#ebdbb2" },
+                                color: { value: "#f0f0f0" },
                                 links: {
-                                        color: "#665c54",
+                                        color: "#333333",
                                         distance: 210,
                                         enable: true,
-                                        opacity: 0.25,
+                                        opacity: 0.2,
                                         width: 1,
                                 },
                                 move: {
@@ -67,7 +67,7 @@ const ParticlesBackground = (props) => {
                                         value: 120,
                                 },
                                 opacity: {
-                                        value: { min: 0, max: 0.45 },
+                                        value: { min: 0, max: 0.3 },
                                         animation: {
                                                 enable: true,
                                                 speed: 0.4,

@@ -33,7 +33,7 @@ export default function Navigation() {
                                                                         left: "0.55rem",
                                                                         right: "0.55rem",
                                                                         height: "1px",
-                                                                        background: "var(--yellow)",
+                                                                        background: "var(--accent)",
                                                                         borderRadius: "2px",
                                                                 }}
                                                                 transition={{ type: "spring", stiffness: 380, damping: 30 }}

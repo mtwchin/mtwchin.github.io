@@ -17,7 +17,7 @@ export default function Contact() {
                         style={{ padding: "7rem 4rem 3rem 4rem", maxWidth: "680px" }}
                 >
                         <div className="section-label" style={{ marginBottom: "0.4rem" }}>get in touch</div>
-                        <h1 style={{ color: "var(--yellow)", marginBottom: "0.75rem" }}>contact</h1>
+                        <h1 style={{ marginBottom: "0.75rem" }}>contact</h1>
 
                         <p style={{ marginBottom: "2.5rem" }}>
                                 open to opportunities, collaborations, or just chatting about tech.

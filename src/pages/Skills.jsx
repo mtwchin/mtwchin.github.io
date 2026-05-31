@@ -30,9 +30,9 @@ const tagVariants = {
 };
 
 const glowRGB = {
-        lang: "184,187,38",
-        tool: "131,165,152",
-        db:   "211,134,155",
+        lang: "74,158,255",
+        tool: "200,200,200",
+        db:   "74,158,255",
 };
 
 function TagGroup({ label, items, type }) {
@@ -74,7 +74,7 @@ export default function Skills() {
                         style={{ padding: "7rem 4rem 3rem 4rem", maxWidth: "780px" }}
                 >
                         <div className="section-label" style={{ marginBottom: "0.4rem" }}>technical skills</div>
-                        <h1 style={{ color: "var(--yellow)", marginBottom: "1.75rem" }}>skills</h1>
+                        <h1 style={{ marginBottom: "1.75rem" }}>skills</h1>
 
                         <TagGroup label="languages" items={languages} type="lang" />
                         <TagGroup label="tools, frameworks & platforms" items={tools} type="tool" />

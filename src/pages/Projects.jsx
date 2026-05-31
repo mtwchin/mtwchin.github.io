@@ -58,7 +58,7 @@ function TiltCard({ project, i }) {
 
         const shadowX = useTransform(springRotY, [-8, 8], ["-8px", "8px"]);
         const shadowY = useTransform(springRotX, [-8, 8], ["8px", "-8px"]);
-        const boxShadow = useMotionTemplate`${shadowX} ${shadowY} 24px rgba(0,0,0,0.45), 0 0 0 1px rgba(250,189,47,0.06)`;
+        const boxShadow = useMotionTemplate`${shadowX} ${shadowY} 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,158,255,0.04)`;
 
         function handleMouseMove(e) {
                 if (!ref.current) return;
@@ -94,12 +94,12 @@ function TiltCard({ project, i }) {
                                                         <h2 className="project-title">{project.name}</h2>
                                                         {project.badge && (
                                                                 <span style={{
-                                                                        fontSize: "0.68rem",
-                                                                        color: "var(--aqua)",
-                                                                        border: "1px solid rgba(142,192,124,0.35)",
+                                                                        fontSize: "0.66rem",
+                                                                        color: "var(--accent)",
+                                                                        border: "1px solid rgba(74,158,255,0.25)",
                                                                         padding: "0.1rem 0.4rem",
                                                                         borderRadius: "2px",
-                                                                        letterSpacing: "0.05em",
+                                                                        letterSpacing: "0.06em",
                                                                         whiteSpace: "nowrap",
                                                                         flexShrink: 0,
                                                                 }}>
@@ -155,7 +155,7 @@ export default function Projects() {
                         className="page-container projects-page"
                 >
                         <div className="section-label" style={{ marginBottom: "0.4rem" }}>selected builds</div>
-                        <h1 style={{ color: "var(--yellow)", marginBottom: "0.4rem" }}>projects</h1>
+                        <h1 style={{ marginBottom: "0.4rem" }}>projects</h1>
                         <p style={{ marginBottom: "2rem" }}>
                                 links, context, and the stacks behind them
                         </p>

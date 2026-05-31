@@ -6,20 +6,20 @@ const workEntries = [
                 role: "Incoming Software Developer Intern",
                 year: "Summer 2026",
                 href: "https://mitibmwatsonailab.mit.edu/",
-                dot: "var(--blue)",
+                dot: "var(--accent)",
         },
         {
                 company: "Colexia",
                 role: "Software Engineering Intern",
                 year: "2025",
-                dot: "var(--purple)",
+                dot: "var(--fg3)",
         },
         {
                 company: "Digital Media Engagement Lab",
                 role: "Undergraduate Research Assistant",
                 year: "2024–2025",
                 href: "https://www.digitalengagementlab.org/",
-                dot: "var(--green)",
+                dot: "var(--fg3)",
         },
 ];
 
@@ -49,7 +49,7 @@ export default function About() {
                         style={{ padding: "7rem 4rem 3rem 4rem", maxWidth: "780px" }}
                 >
                         <div className="section-label" style={{ marginBottom: "0.4rem" }}>who am i</div>
-                        <h1 style={{ color: "var(--yellow)", marginBottom: "1.5rem" }}>matthew chin</h1>
+                        <h1 style={{ marginBottom: "1.5rem" }}>matthew chin</h1>
 
                         {/* Bio */}
                         <motion.div
