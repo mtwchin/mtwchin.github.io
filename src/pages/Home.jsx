@@ -123,7 +123,7 @@ export default function Home() {
 						/>
 						<span style={{ color: "var(--fg2)", fontSize: "0.82rem" }}>
 							incoming swe intern @{" "}
-							<span style={{ color: "var(--accent)" }}>mit-ibm watson ai lab</span>
+							<span style={{ color: "var(--accent)" }}>ibm</span>
 						</span>
 					</motion.div>
 
@@ -138,9 +138,8 @@ export default function Home() {
 								maxWidth: "540px",
 							}}
 						>
-							junior at the university of maryland studying computer science and
-							business. building software that's fast, functional, and occasionally
-							interesting.
+							junior at the university of maryland studying computer science and minoring in
+							business. building and learning about all types of software.
 						</p>
 					</motion.div>
 
