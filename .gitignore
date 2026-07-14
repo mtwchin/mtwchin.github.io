@@ -26,3 +26,6 @@ dist-ssr
 # Claude Code
 .claude/
 CLAUDE.md
+
+# Resume, synced from private repo at deploy time (see .github/workflows/deploy.yml)
+public/resume.pdf

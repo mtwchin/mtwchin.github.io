@@ -32,7 +32,20 @@ jobs:
       
       - name: Install dependencies
         run: npm ci
-      
+
+      - name: Fetch resume from private repo
+        uses: actions/checkout@v4
+        with:
+          repository: mtwchin/mindscape
+          token: ${{ secrets.RESUME_REPO_TOKEN }}
+          sparse-checkout: |
+            01 Career/Matthew_Chin_resume.pdf
+          sparse-checkout-cone-mode: false
+          path: resume-src
+
+      - name: Copy resume into public
+        run: cp "resume-src/01 Career/Matthew_Chin_resume.pdf" public/resume.pdf
+
       - name: Build
         run: npm run build
       

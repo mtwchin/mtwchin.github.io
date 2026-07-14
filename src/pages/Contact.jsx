@@ -5,6 +5,7 @@ const contacts = [
 	{ label: "email", value: "mtwchin@gmail.com", href: "mailto:mtwchin@gmail.com" },
 	{ label: "linkedin", value: "linkedin.com/in/matthewleechin", href: "https://linkedin.com/in/matthewleechin" },
 	{ label: "github", value: "github.com/mtwchin", href: "https://github.com/mtwchin" },
+	{ label: "resume", value: "view / download PDF", href: "/resume.pdf" },
 ];
 
 function CopyEmailChip() {
