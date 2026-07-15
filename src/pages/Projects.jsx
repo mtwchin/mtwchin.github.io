@@ -45,6 +45,20 @@ const projects = [
 		],
 		badge: "open source",
 	},
+	{
+		name: "BobVision",
+		date: "June 2026",
+		tech: "Python, ffmpeg, OpenCV, Whisper, Granite Vision, Claude API",
+		description:
+			"Built during Bobathon, IBM's internal hackathon — a custom video-processing mode for IBM Bob (an agentic AI coding assistant) that converts screen recordings into timestamped multimodal context, letting Bob diagnose bugs directly against the real codebase.",
+		highlights: [
+			"Built a custom mode for IBM Bob enabling it to process video input by converting recordings into timestamped multimodal context (sampled frames, Whisper transcripts, OCR text), powering use cases like bug diagnosis from screen recordings.",
+			"Reduced vision token costs by ~85% by implementing scene-change detection with perceptual hashing to deduplicate static frames, compressing 600+ frames per 10-minute video down to 60–80 keyframes.",
+			"Captured silent UI interactions invisible to transcripts and OCR by running IBM Granite Vision over consecutive keyframe pairs, improving action-related question accuracy by ~40% on an internal test set.",
+			"Automated bug localization by parsing file paths and stack traces from OCR output and injecting referenced source code into a single Claude API call, correctly identifying the faulty file and function in 8 of 10 benchmark recordings.",
+		],
+		badge: "internal",
+	},
 ];
 
 function GlassCard({ project, i }) {
@@ -99,14 +113,16 @@ function GlassCard({ project, i }) {
 						</div>
 						<div className="project-meta">{project.date}</div>
 					</div>
-					<a
-						className="project-link"
-						href={project.github}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						github →
-					</a>
+					{project.github && (
+						<a
+							className="project-link"
+							href={project.github}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							github →
+						</a>
+					)}
 				</div>
 
 				{project.demoVideo && (
