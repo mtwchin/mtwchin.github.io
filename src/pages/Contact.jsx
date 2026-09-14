@@ -4,7 +4,6 @@ const contacts = [
   { label: 'Email', value: 'mtwchin@gmail.com', href: 'mailto:mtwchin@gmail.com' },
   { label: 'LinkedIn', value: 'matthewleechin', href: 'https://linkedin.com/in/matthewleechin' },
   { label: 'GitHub', value: 'mtwchin', href: 'https://github.com/mtwchin' },
-  { label: 'Résumé', value: 'View résumé (PDF)', href: '/resume.pdf' },
 ];
 
 export default function Contact() {
