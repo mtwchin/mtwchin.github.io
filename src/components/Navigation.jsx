@@ -1,34 +1,15 @@
-import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-
-const links = [
-	{ to: "/", label: "home" },
-	{ to: "/about", label: "about" },
-	{ to: "/skills", label: "skills" },
-	{ to: "/projects", label: "projects" },
-	{ to: "/contact", label: "contact" },
-];
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Navigation() {
-	const location = useLocation();
-
-	return (
-		<nav className="navbar">
-			{links.map(({ to, label }) => {
-				const isActive = location.pathname === to;
-				return (
-					<Link key={to} to={to} className={`nav-link${isActive ? " active" : ""}`}>
-						{isActive && (
-							<motion.span
-								layoutId="nav-pill"
-								className="nav-pill"
-								transition={{ type: "spring", stiffness: 400, damping: 32 }}
-							/>
-						)}
-						{label}
-					</Link>
-				);
-			})}
-		</nav>
-	);
+  return <header className="site-header">
+    <div className="nav-inner wrap">
+      <Link className="wordmark" to="/" aria-label="Matthew Chin, home">mc<span className="wordmark-star" aria-hidden="true">✳</span></Link>
+      <nav aria-label="Main navigation">
+        <NavLink to="/projects">Work</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/skills">Toolkit</NavLink>
+        <NavLink to="/contact">Contact <span aria-hidden="true">↗</span></NavLink>
+      </nav>
+    </div>
+  </header>;
 }

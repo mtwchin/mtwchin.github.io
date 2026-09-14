@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import ProjectVisual from '../components/ProjectVisual';
 
 const projects = [
 	{
@@ -15,7 +14,6 @@ const projects = [
 			"Designed a layered configuration system (defaults → YAML file → CLI flags) with gzip-compressed JSON API responses and support for multiple graph layout algorithms.",
 			"Achieved cross-platform auto-browser-launch and random port allocation with no external dependencies.",
 		],
-		demoVideo: "/demos/grafux-demo.mov",
 	},
 	{
 		name: "Itinera",
@@ -30,20 +28,6 @@ const projects = [
 			"Implemented geo-optimization by converting 10+ trending spots per city into coordinates, enabling cluster-based day grouping that minimizes travel time.",
 			"Created an interactive React + TS frontend with Google Maps, Places Autocomplete, and export-to-Google-Maps flows for day-by-day itineraries.",
 		],
-	},
-	{
-		name: "Kubernetes/minikube",
-		date: "December 2025",
-		github: "https://github.com/kubernetes/minikube",
-		tech: "Go, Linux, systemd, Docker",
-		description:
-			"Unified CRI-O service configuration across Minikube's ISO and KIC environments to keep local clusters consistent with production-grade runtimes.",
-		highlights: [
-			"Contributed to Minikube, the local Kubernetes toolkit for running single-node clusters without a full cloud setup.",
-			"Aligned CRI-O systemd service definitions between ISO and container-based KIC builds to eliminate configuration drift and runtime bugs.",
-			"Updated the kicbase image to ship a custom crio.service and sysconfig settings so CRI-O behaves consistently across Minikube environments.",
-		],
-		badge: "open source",
 	},
 	{
 		name: "BobVision",
@@ -61,114 +45,30 @@ const projects = [
 	},
 ];
 
-function GlassCard({ project, i }) {
-	const ref = useRef(null);
 
-	const lightX = useMotionValue(50);
-	const lightY = useMotionValue(-20);
+const projectIds = ['grafux', 'itinera', 'bobvision'];
 
-	const springLightX = useSpring(lightX, { stiffness: 140, damping: 24 });
-	const springLightY = useSpring(lightY, { stiffness: 140, damping: 24 });
-
-	const sheen = useMotionTemplate`radial-gradient(480px circle at ${springLightX}% ${springLightY}%, rgba(56, 189, 248, 0.12), transparent 65%)`;
-
-	function handleMouseMove(e) {
-		if (!ref.current) return;
-		const rect = ref.current.getBoundingClientRect();
-		lightX.set(((e.clientX - rect.left) / rect.width) * 100);
-		lightY.set(((e.clientY - rect.top) / rect.height) * 100);
-	}
-
-	function handleMouseLeave() {
-		lightX.set(50);
-		lightY.set(-20);
-	}
-
-	return (
-		<motion.article
-				ref={ref}
-				className="glass project-card"
-				onMouseMove={handleMouseMove}
-				onMouseLeave={handleMouseLeave}
-				initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
-				animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-				transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.15 + i * 0.12 }}
-			>
-				{/* cursor-following specular light */}
-				<motion.div
-					style={{
-						position: "absolute",
-						inset: 0,
-						borderRadius: "inherit",
-						pointerEvents: "none",
-						background: sheen,
-					}}
-				/>
-
-				<div className="project-header">
-					<div>
-						<div style={{ display: "flex", alignItems: "center", gap: "0.7rem", flexWrap: "wrap" }}>
-							<h2 className="project-title">{project.name}</h2>
-							{project.badge && <span className="project-badge">{project.badge}</span>}
-						</div>
-						<div className="project-meta">{project.date}</div>
-					</div>
-					{project.github && (
-						<a
-							className="project-link"
-							href={project.github}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							github →
-						</a>
-					)}
-				</div>
-
-				{project.demoVideo && (
-					<div className="project-demo">
-						<video src={project.demoVideo} controls playsInline className="project-demo-video">
-							Your browser does not support the video tag.
-						</video>
-					</div>
-				)}
-
-				<p className="project-description">{project.description}</p>
-				<em className="project-tech">{project.tech}</em>
-
-				<ul className="project-points">
-					{project.highlights.map((item, idx) => (
-						<li key={idx}>{item}</li>
-					))}
-				</ul>
-		</motion.article>
-	);
+function ProjectCard({ project, index }) {
+  const id = projectIds[index];
+  return <article className="project-article" id={id}>
+    <div>
+      <ProjectVisual kind={id} />
+    </div>
+    <div>
+      <div className="project-header"><div><h2 className="project-title">{project.name}</h2><div className="project-meta">{project.date}</div></div>{project.badge && <span className="project-badge">{project.badge}</span>}</div>
+      <p className="project-description">{project.description}</p>
+      <span className="project-tech">{project.tech}</span>
+      {project.github && <a className="project-link" href={project.github} target="_blank" rel="noreferrer">View on GitHub ↗</a>}
+      <details className="project-details"><summary>Behind the build</summary><ul className="project-points">{project.highlights.map(item => <li key={item}>{item}</li>)}</ul></details>
+    </div>
+  </article>;
 }
 
 export default function Projects() {
-	return (
-		<motion.div
-			initial={{ opacity: 0, y: 18 }}
-			animate={{ opacity: 1, y: 0 }}
-			exit={{ opacity: 0, y: -10 }}
-			transition={{ duration: 0.35, ease: "easeOut" }}
-			className="page-container"
-		>
-			<div className="section-label" style={{ marginBottom: "0.9rem" }}>
-				selected builds
-			</div>
-			<h1 style={{ fontSize: "clamp(2.4rem, 5vw, 3.4rem)", marginBottom: "0.8rem" }}>
-				things i've <em className="serif-i glass-ink">made</em>
-			</h1>
-			<p style={{ marginBottom: "2.2rem" }}>
-				links, context, and the stacks behind them
-			</p>
-
-			<div style={{ display: "grid", gap: "1.4rem" }}>
-				{projects.map((project, i) => (
-					<GlassCard key={project.name} project={project} i={i} />
-				))}
-			</div>
-		</motion.div>
-	);
+  return <div className="page-container">
+    <span className="eyebrow">01 / Selected work</span>
+    <h1>Things I’ve built.</h1>
+    <p className="projects-intro">Tools, experiments, and contributions. A closer look at the problems I’ve worked on and the thinking behind them.</p>
+    <div className="project-list">{projects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} />)}</div>
+  </div>;
 }
