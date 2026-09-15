@@ -17,10 +17,22 @@ export default function Home() {
             <p className="hero-description">Exploring how things work.<br />Building what comes next.</p>
             <button className="text-link hero-cta" onClick={scrollToWork}>Explore my work <span aria-hidden="true">↓</span></button>
           </div>
-          <div className="hero-bottom"><span className="status-line"><i aria-hidden="true" />Software developer intern @ IBM</span><span className="hero-location">CS + Business · University of Maryland</span></div>
         </div>
         <span className="sculpture-caption" aria-hidden="true">FIG. 01 — A WORK IN PROGRESS</span>
       </div>
+    </section>
+    <section className="currently wrap" aria-labelledby="currently-title">
+      <h2 className="eyebrow" id="currently-title">00 / Currently</h2>
+      <dl className="currently-grid">
+        <div className="currently-item">
+          <dt><i aria-hidden="true" />Working</dt>
+          <dd><strong>Software Developer Intern</strong><span>IBM</span></dd>
+        </div>
+        <div className="currently-item">
+          <dt>Studying</dt>
+          <dd><strong>CS + Business</strong><span>University of Maryland</span></dd>
+        </div>
+      </dl>
     </section>
     <section className="selected-work wrap" id="selected-work" aria-labelledby="work-title">
       <div className="section-heading"><div><span className="eyebrow">01 / Selected work</span><h2 id="work-title">Projects</h2></div><Link className="text-link" to="/projects">All projects <span aria-hidden="true">↗</span></Link></div>
