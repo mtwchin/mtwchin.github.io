@@ -12,7 +12,7 @@ export default function Home() {
         <PointSculpture />
         <div className="hero-content wrap">
           <div className="hero-copy">
-            <p className="eyebrow">Software engineer & curious person</p>
+            <p className="eyebrow">Software engineer & undergrad</p>
             <h1 id="hero-title">Matthew<br />Chin<span className="name-period">.</span></h1>
             <p className="hero-description">Exploring how things work.<br />Building what comes next.</p>
             <button className="text-link hero-cta" onClick={scrollToWork}>Explore my work <span aria-hidden="true">↓</span></button>
