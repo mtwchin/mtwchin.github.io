@@ -1,3 +1,6 @@
+import Reveal from '../components/Reveal';
+import TextReveal from '../components/TextReveal';
+
 const languages = ["Java", "Python", "C"];
 
 const tools = [
@@ -24,10 +27,10 @@ const coursework = [
 
 
 function ToolGroup({ label, items }) {
-  return <section className="tool-group"><h2>{label}</h2><div>{items.map(item => <span className="skill-tag" key={item}>{item}</span>)}</div></section>;
+  return <Reveal as="section" className="tool-group"><h2>{label}</h2><div>{items.map(item => <span className="skill-tag" key={item}>{item}</span>)}</div></Reveal>;
 }
 export default function Skills() {
-  return <div className="page-container toolkit-page"><span className="eyebrow">03 / Toolkit</span><h1>What I work with.</h1><p className="projects-intro">The languages, tools, and foundations I bring to a project.</p>
+  return <div className="page-container toolkit-page"><span className="eyebrow">03 / Toolkit</span><TextReveal as="h1" text="What I work with." /><p className="projects-intro">The languages, tools, and foundations I bring to a project.</p>
     <ToolGroup label="Languages" items={languages} />
     <ToolGroup label="Tools & platforms" items={tools} />
     <ToolGroup label="Databases" items={databases} />

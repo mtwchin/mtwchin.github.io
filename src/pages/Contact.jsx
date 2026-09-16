@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import TextReveal from '../components/TextReveal';
 
 const contacts = [
   { label: 'Email', value: 'mtwchin@gmail.com', href: 'mailto:mtwchin@gmail.com' },
@@ -21,7 +22,7 @@ export default function Contact() {
     timeout.current = setTimeout(() => setMessage('Copy email'), 3500);
   }
   return <div className="page-container contact-page">
-    <span className="eyebrow">04 / Get in touch</span><h1>A good place to start.</h1>
+    <span className="eyebrow">04 / Get in touch</span><TextReveal as="h1" text="A good place to start." />
     <p className="contact-intro">Have a project, an opportunity, or something interesting to share? I’d love to hear about it.</p>
     <div className="contact-links">{contacts.map(({label, value, href}) => <a key={label} href={href} target={href.startsWith('mailto:') ? undefined : '_blank'} rel="noreferrer" className="contact-link"><span className="eyebrow">{label}</span><span>{value}</span><span aria-hidden="true">↗</span></a>)}</div>
     <button className="text-link copy-email" onClick={copyEmail}><span aria-live="polite">{message}</span></button>

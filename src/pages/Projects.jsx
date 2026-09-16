@@ -1,4 +1,7 @@
 import ProjectVisual from '../components/ProjectVisual';
+import Reveal from '../components/Reveal';
+import TextReveal from '../components/TextReveal';
+import InteractivePreview from '../components/InteractivePreview';
 
 const projects = [
 	{
@@ -50,9 +53,9 @@ const projectIds = ['grafux', 'itinera', 'bobvision'];
 
 function ProjectCard({ project, index }) {
   const id = projectIds[index];
-  return <article className="project-article" id={id}>
+  return <Reveal as="article" className="project-article" id={id}>
     <div>
-      <ProjectVisual kind={id} />
+      <InteractivePreview><ProjectVisual kind={id} /></InteractivePreview>
     </div>
     <div>
       <div className="project-header"><div><h2 className="project-title">{project.name}</h2><div className="project-meta">{project.date}</div></div>{project.badge && <span className="project-badge">{project.badge}</span>}</div>
@@ -61,13 +64,13 @@ function ProjectCard({ project, index }) {
       {project.github && <a className="project-link" href={project.github} target="_blank" rel="noreferrer">View on GitHub ↗</a>}
       <details className="project-details"><summary>Behind the build</summary><ul className="project-points">{project.highlights.map(item => <li key={item}>{item}</li>)}</ul></details>
     </div>
-  </article>;
+  </Reveal>;
 }
 
 export default function Projects() {
   return <div className="page-container">
     <span className="eyebrow">01 / Selected work</span>
-    <h1>Things I’ve built.</h1>
+    <TextReveal as="h1" text="Things I’ve built." />
     <p className="projects-intro">Tools, experiments, and contributions. A closer look at the problems I’ve worked on and the thinking behind them.</p>
     <div className="project-list">{projects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} />)}</div>
   </div>;

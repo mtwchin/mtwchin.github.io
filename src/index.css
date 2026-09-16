@@ -59,9 +59,11 @@ p { color: var(--fg2); font-size: 1rem; line-height: 1.7; }
 .site-header nav { display: flex; gap: 32px; align-items: center; }
 .site-header nav a { position: relative; padding: 14px 0; font-size: 13px; color: var(--fg2); transition: color .2s; }
 .site-header nav a:hover, .site-header nav a.active { color: var(--fg); }
-.site-header nav a.active::after { content: ''; position: absolute; height: 2px; bottom: 6px; left: 0; right: 0; background: var(--fg); }
+.nav-indicator { position: absolute; height: 2px; bottom: 6px; left: 0; right: 0; background: var(--fg); }
+.site-header nav a::before { content: ''; position: absolute; height: 1px; bottom: 6px; left: 0; right: 0; background: var(--fg3); transform: scaleX(0); transform-origin: right; transition: transform .3s ease; }
+.site-header nav a:hover::before { transform: scaleX(1); transform-origin: left; }
 .site-header nav a:last-child { margin-left: 20px; color: var(--fg); }
-.site-header nav a:last-child span { margin-left: 12px; }
+.site-header nav a:last-child .nav-arrow { margin-left: 12px; }
 .hero { height: 150svh; position: relative; }
 .hero-stage { position: sticky; top: 84px; height: calc(100svh - 84px); min-height: 620px; overflow: hidden; border-bottom: 1px solid var(--line); }
 .point-sculpture { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -112,7 +114,18 @@ p { color: var(--fg2); font-size: 1rem; line-height: 1.7; }
 .contact-invitation { border-top: 1px solid var(--line); padding-block: 55px 75px; }
 .contact-invitation > a { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; font-size: clamp(62px, 9vw, 128px); line-height: 1.2; letter-spacing: -.065em; }
 .contact-invitation > a:hover { color: var(--accent); }
-.contact-invitation > a > span { font-size: .7em; }
+.contact-invitation > a > .invitation-arrow { font-size: .7em; transition: transform .55s cubic-bezier(.22,1,.36,1); }
+.contact-invitation > a:hover > .invitation-arrow { transform: translateY(-6px); }
+.word-window { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .1em; margin-bottom: -.1em; }
+.revealed-word { display: inline-block; }
+.preview-hit-area { perspective: 1000px; }
+.interactive-preview { transform-style: preserve-3d; }
+.reveal { min-width: 0; }
+.reveal:focus-within { opacity: 1 !important; transform: none !important; }
+.wordmark-star { display: inline-block; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+.wordmark:hover .wordmark-star { transform: rotate(90deg); }
+.contact-link > span:last-child { transition: transform .35s cubic-bezier(.22,1,.36,1); }
+.contact-link:hover > span:last-child { transform: translate(5px, -5px); }
 .site-footer { border-top: 1px solid var(--line); padding-block: 30px; display: flex; align-items: center; justify-content: space-between; gap: 25px; font-size: 12px; }
 .footer-signature { display: flex; gap: 20px; }
 .footer-signature span { color: var(--fg3); }
@@ -188,7 +201,7 @@ p { color: var(--fg2); font-size: 1rem; line-height: 1.7; }
   .site-header nav { gap: 19px; }
   .site-header nav a { font-size: 12px; }
   .site-header nav a:last-child { margin-left: 0; }
-  .site-header nav a:last-child span { display: none; }
+  .site-header nav a:last-child .nav-arrow { display: none; }
   .hero { height: 130svh; }
   .hero-stage { top: 70px; height: calc(100svh - 70px); min-height: 700px; }
   .hero-content { justify-content: flex-end; padding-bottom: 100px; }
@@ -240,6 +253,9 @@ p { color: var(--fg2); font-size: 1rem; line-height: 1.7; }
   .wordmark { font-size: 25px; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .reveal, .revealed-word, .interactive-preview, .route-stop { transform: none !important; opacity: 1 !important; }
+  .route-reveal { stroke-dasharray: none !important; }
+  .wordmark:hover .wordmark-star, .contact-link:hover > span:last-child, .contact-invitation > a:hover > .invitation-arrow { transform: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .hero { height: auto; }

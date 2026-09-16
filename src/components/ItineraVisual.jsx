@@ -1,4 +1,7 @@
-import { useId } from 'react';
+import { useId, useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
+
+const route = 'M235 225L244 188L311 202L343 193L377 203L389 147L434 137L447 89';
 
 // An illustrated itinerary, with streets and building footprints for texture.
 const blocks = Array.from({ length: 112 }, (_, index) => {
@@ -9,9 +12,17 @@ const blocks = Array.from({ length: 112 }, (_, index) => {
 
 export default function ItineraVisual() {
   const gridId = useId();
-  return <div className="project-visual travel-visual" aria-hidden="true">
+  const routeMaskId = useId();
+  const container = useRef(null);
+  const visible = useInView(container, { once: true, amount: 0.3 });
+  const reduced = useReducedMotion();
+  const ready = visible || reduced;
+  return <div ref={container} className="project-visual travel-visual" aria-hidden="true">
     <svg viewBox="0 0 600 400" fill="none">
       <defs>
+        <mask id={routeMaskId} maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="400">
+          <motion.path className="route-reveal" d={route} stroke="white" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" initial={false} animate={{ pathLength: ready ? 1 : 0 }} transition={{ duration: reduced ? 0 : 2.1, ease: 'easeInOut' }} />
+        </mask>
         <pattern id={gridId} width="44" height="49" patternUnits="userSpaceOnUse">
           <path d="M0 0H44M0 0V49" stroke="#faf9f0" strokeWidth="5" />
           <path d="M0 0H44M0 0V49" stroke="#d2d6c7" strokeWidth=".6" />
@@ -44,8 +55,8 @@ export default function ItineraVisual() {
         <text x="306" y="303" transform="rotate(-76 306 303)" fill="#718f89" letterSpacing="1">KAMO RIVER</text>
       </g>
       {/* A continuous walking route with three numbered stops. */}
-      <path d="M235 225L244 188L311 202L343 193L377 203L389 147L434 137L447 89" stroke="#f5f4e8" strokeWidth="7" strokeLinejoin="round" />
-      <path d="M235 225L244 188L311 202L343 193L377 203L389 147L434 137L447 89" stroke="#596f4e" strokeWidth="2.5" strokeDasharray="3 5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d={route} stroke="#f5f4e8" strokeWidth="7" strokeLinejoin="round" />
+      <path d={route} stroke="#596f4e" strokeWidth="2.5" strokeDasharray="3 5" strokeLinecap="round" strokeLinejoin="round" mask={`url(#${routeMaskId})`} />
       <g fill="#f8f8ef" stroke="#d3d8c8" strokeWidth=".7">
         <rect x="141" y="241" width="115" height="26" rx="4" />
         <rect x="362" y="225" width="55" height="26" rx="4" />
@@ -54,11 +65,11 @@ export default function ItineraVisual() {
       <g fill="#42533b" fontFamily="Arial, sans-serif" fontSize="11">
         <text x="153" y="258">Nishiki Market</text><text x="377" y="242">Gion</text><text x="425" y="64">Philosopher’s Path</text>
       </g>
-      {[{x:235,y:225}, {x:377,y:203}, {x:447,y:89}].map((point, index) => <g key={index}>
+      {[{x:235,y:225}, {x:377,y:203}, {x:447,y:89}].map((point, index) => <motion.g key={index} className="route-stop" initial={reduced ? false : { opacity: 0.4, scale: 0.75 }} animate={ready ? { opacity: 1, scale: 1 } : { opacity: 0.4, scale: 0.75 }} transition={{ duration: reduced ? 0 : 0.45, delay: reduced ? 0 : index * 0.9, type: 'tween', ease: [0.22, 1, 0.36, 1] }} style={{ transformOrigin: `${point.x}px ${point.y}px` }}>
         <circle cx={point.x} cy={point.y} r="14" fill="#f5f5e9" />
         <circle cx={point.x} cy={point.y} r="10.5" fill="#566e49" />
         <text x={point.x} y={point.y + 3.7} textAnchor="middle" fill="#fffef3" fontFamily="Arial, sans-serif" fontSize="10">{index + 1}</text>
-      </g>)}
+      </motion.g>)}
       {/* Compact itinerary sheet, designed as part of the illustration. */}
       <rect x="22" y="281" width="190" height="88" rx="5" fill="#faf9f0" stroke="#d5dacb" />
       <text x="37" y="302" fill="#7e8974" fontFamily="monospace" fontSize="8" letterSpacing="1.2">YOUR DAY, MAPPED OUT</text>

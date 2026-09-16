@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { HashRouter, Routes, Route, useLocation, Link } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -40,5 +41,5 @@ function PageRoutes() {
 }
 
 export default function App() {
-  return <HashRouter><a className="skip-link" href="#main-content" onClick={(event) => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a><PageRoutes /></HashRouter>;
+  return <MotionConfig reducedMotion="user"><HashRouter><a className="skip-link" href="#main-content" onClick={(event) => { event.preventDefault(); document.getElementById('main-content')?.focus(); }}>Skip to content</a><PageRoutes /></HashRouter></MotionConfig>;
 }
